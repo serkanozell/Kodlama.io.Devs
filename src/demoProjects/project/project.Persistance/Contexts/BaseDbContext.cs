@@ -13,6 +13,7 @@ namespace project.Persistance.Contexts
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Technology> Technologies { get; set; }
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -30,11 +31,24 @@ namespace project.Persistance.Contexts
             {
                 x.ToTable("Languages").HasKey(k => k.Id);
                 x.Property(p => p.Id).HasColumnName("Id");
-                x.Property(p=>p.Name).HasColumnName("Name");
+                x.Property(p => p.Name).HasColumnName("Name");
+                x.HasMany(p => p.Technologies);
+            });
+
+            modelBuilder.Entity<Technology>(x =>
+            {
+                x.ToTable("Technologies").HasKey(k => k.Id);
+                x.Property(p => p.Id).HasColumnName("Id");
+                x.Property(p => p.LanguageId).HasColumnName("LanguageId");
+                x.Property(p => p.Name).HasColumnName("Name");
+                x.HasOne(p => p.Language);
             });
 
             //Language[] languageEntitySeeds = { new(1, "C#") };
             //modelBuilder.Entity<Language>().HasData(languageEntitySeeds);
+
+            //Technology[] technolgyEntitySeeds = { new(1,1, "ASP.Net") };
+            //modelBuilder.Entity<Technology>().HasData(technolgyEntitySeeds);
         }
     }
 }

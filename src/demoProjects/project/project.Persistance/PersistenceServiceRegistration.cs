@@ -20,6 +20,7 @@ namespace project.Persistence
                                                      options.UseSqlServer(
                                                          configuration.GetConnectionString("CoreDevDbConntectionString")));
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<ITechnologyRepository, TechnologyRepository>();
 
             return services;
         }

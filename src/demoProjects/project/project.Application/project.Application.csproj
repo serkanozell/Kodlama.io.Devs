@@ -19,4 +19,13 @@
     <ProjectReference Include="..\project.Domain\project.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Languages\Constants\" />
+    <Folder Include="Features\Technologies\Commands\DeleteTechnology\" />
+    <Folder Include="Features\Technologies\Commands\UpdateTechnology\" />
+    <Folder Include="Features\Technologies\Models\" />
+    <Folder Include="Features\Technologies\Constants\" />
+    <Folder Include="Features\Technologies\Queries\" />
+  </ItemGroup>
+
 </Project>

@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using project.Application.Features.Languages.Rules;
+using project.Application.Features.Technologies.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace project.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<LanguageBusinessRules>();
+            services.AddScoped<TechnologyBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));

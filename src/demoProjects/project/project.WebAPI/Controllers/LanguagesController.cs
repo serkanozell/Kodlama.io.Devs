@@ -6,7 +6,6 @@ using project.Application.Features.Languages.Commands.DeleteLanguage;
 using project.Application.Features.Languages.Commands.UpdateLanguage;
 using project.Application.Features.Languages.Dtos;
 using project.Application.Features.Languages.Models;
-using project.Application.Features.Languages.Queries.GetAllLanguage;
 using project.Application.Features.Languages.Queries.GetByIdLanguage;
 using project.Application.Features.Languages.Queries.GetListLanguage;
 
@@ -50,15 +49,6 @@ namespace project.WebAPI.Controllers
         {
             UpdatedLanguageDto result = await Mediator.Send(updateLanguageCommand);
             return Ok("Success");
-        }
-
-        [HttpGet("getall")]
-        public async Task<IActionResult> GetAll([FromQuery] PageRequest pageRequest)
-        {
-            GetAllLanguageQuery getAllLanguageQuery = new() { PageRequest = pageRequest };
-            var result = await Mediator.Send(getAllLanguageQuery);
-
-            return Ok(result);
         }
     }
 }
