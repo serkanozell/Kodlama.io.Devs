@@ -24,5 +24,16 @@ namespace project.Application.Features.Technologies.Rules
             IPaginate<Technology> technologies = await _technologyRepository.GetListAsync(t => t.Name == name);
             if (technologies.Items.Any()) throw new BusinessException("Technology already exists");
         }
+
+        public void TechnologyShouldExistWhenRequested(Technology technology)
+        {
+            if (technology == null) throw new BusinessException("Requested Technology does not exist");
+        }
+
+        public async Task TechnologyNameCanNotBeSameAsEntityModelWhenUpdated(string name)
+        {
+            var result = await _technologyRepository.GetAsync(t => t.Name == name);
+            if (result != null) throw new BusinessException("Language name and your request is same");
+        }
     }
 }

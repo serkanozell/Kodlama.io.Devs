@@ -35,8 +35,8 @@ namespace project.Application.Features.Languages.Queries.GetByIdLanguage
 
                 _languageBusinessRules.LanguageShouldExistWhenRequested(language);
 
-                LanguageGetByIdDto languageDto = _mapper.Map<LanguageGetByIdDto>(language);
-                return languageDto;
+                LanguageGetByIdDto languageGetByIdDto = _mapper.Map<LanguageGetByIdDto>(language);
+                return languageGetByIdDto;
             }
         }
     }

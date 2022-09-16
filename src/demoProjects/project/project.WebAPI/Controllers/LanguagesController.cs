@@ -22,21 +22,6 @@ namespace project.WebAPI.Controllers
             return Created("", result);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
-        {
-            GetListLanguageQuery getListLanguageQuery = new() { PageRequest = pageRequest };
-            LanguageListModel result = await Mediator.Send(getListLanguageQuery);
-            return Ok(result);
-        }
-
-        [HttpGet("{Id}")]
-        public async Task<IActionResult> GetById([FromRoute] GetByIdLanguageQuery getByIdLanguageQuery)
-        {
-            LanguageGetByIdDto languageGetByIdDto = await Mediator.Send(getByIdLanguageQuery);
-            return Ok(languageGetByIdDto);
-        }
-
         [HttpDelete("{Id}")]
         public async Task<IActionResult> Delete([FromRoute] DeleteLanguageCommand deleteLanguageCommand)
         {
@@ -49,6 +34,21 @@ namespace project.WebAPI.Controllers
         {
             UpdatedLanguageDto result = await Mediator.Send(updateLanguageCommand);
             return Ok("Success");
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetByIdLanguageQuery getByIdLanguageQuery)
+        {
+            LanguageGetByIdDto languageGetByIdDto = await Mediator.Send(getByIdLanguageQuery);
+            return Ok(languageGetByIdDto);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+        {
+            GetListLanguageQuery getListLanguageQuery = new() { PageRequest = pageRequest };
+            LanguageListModel result = await Mediator.Send(getListLanguageQuery);
+            return Ok(result);
         }
     }
 }
