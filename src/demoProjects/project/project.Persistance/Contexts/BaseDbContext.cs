@@ -14,6 +14,7 @@ namespace project.Persistance.Contexts
         protected IConfiguration Configuration { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Technology> Technologies { get; set; }
+        public DbSet<GithubProfile> GithubProfiles { get; set; }
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -44,11 +45,23 @@ namespace project.Persistance.Contexts
                 x.HasOne(p => p.Language);
             });
 
+            modelBuilder.Entity<GithubProfile>(x =>
+            {
+                x.ToTable("GithubProfiles").HasKey(k => k.Id);
+                x.Property(p => p.Id).HasColumnName("Id");
+                x.Property(p => p.UserId).HasColumnName("UserId");
+                x.Property(p => p.RepositoryName).HasColumnName("RepositoryName");
+                x.Property(p => p.Url).HasColumnName("Url");
+            });
+
             //Language[] languageEntitySeeds = { new(1, "C#") };
             //modelBuilder.Entity<Language>().HasData(languageEntitySeeds);
 
-            //Technology[] technolgyEntitySeeds = { new(1,1, "ASP.Net") };
+            //Technology[] technolgyEntitySeeds = { new(1, 1, "ASP.Net") };
             //modelBuilder.Entity<Technology>().HasData(technolgyEntitySeeds);
+
+            //GithubProfile[] githubEntitySeeds = { new(1, 1, "test", "test.com") };
+            //modelBuilder.Entity<GithubProfile>().HasData(githubEntitySeeds);
         }
     }
 }

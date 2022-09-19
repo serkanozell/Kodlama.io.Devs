@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Githubs\Constants\" />
     <Folder Include="Features\Languages\Constants\" />
     <Folder Include="Features\Technologies\Constants\" />
   </ItemGroup>

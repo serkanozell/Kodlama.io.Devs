@@ -21,6 +21,7 @@ namespace project.Persistence
                                                          configuration.GetConnectionString("CoreDevDbConntectionString")));
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<ITechnologyRepository, TechnologyRepository>();
+            services.AddScoped<IGithubProfileRepository, GithubProfileRepository>();
 
             return services;
         }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.Persistence.Paging;
 using project.Application.Features.Languages.Commands.CreateLanguage;
+using project.Application.Features.Languages.Commands.DeleteLanguage;
 using project.Application.Features.Languages.Commands.UpdateLanguage;
 using project.Application.Features.Languages.Dtos;
 using project.Application.Features.Languages.Models;
@@ -21,7 +22,7 @@ namespace project.Application.Features.Languages.Profiles
             CreateMap<Language, CreateLanguageCommand>().ReverseMap();
 
             CreateMap<Language, DeletedLanguageDto>().ReverseMap();
-            CreateMap<Language, CreateLanguageCommand>().ReverseMap();
+            CreateMap<Language, DeleteLanguageCommand>().ReverseMap();
 
             CreateMap<Language, UpdatedLanguageDto>().ReverseMap();
             CreateMap<Language, UpdateLanguageCommand>().ReverseMap();
